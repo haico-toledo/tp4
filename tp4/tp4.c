@@ -54,7 +54,7 @@ void teste_insere_inicio (struct lista *l, int limite)
         imprimir_lista (l);
     }
 }
-
+/*
 void teste_insere_fim (struct lista *l, int limite)
 {
     int i;
@@ -73,7 +73,7 @@ void teste_remove_inicio (struct lista *l)
 {
     int chave;
 
-    /* remove todo mundo */
+
     while (! lista_vazia (l))
         if (lista_remove_inicio (l, &chave))
             imprimir_lista (l);
@@ -83,7 +83,7 @@ void teste_remove_fim (struct lista *l)
 {
     int chave;
 
-    /* remove todo mundo */
+
     while (! lista_vazia (l))
         if (lista_remove_fim (l, &chave))
             imprimir_lista (l);
@@ -115,7 +115,7 @@ void teste_de_pertinencia (struct lista *l)
     lista_insere_inicio (l, 11);
     lista_insere_inicio (l, 12);
     lista_insere_inicio (l, 14);
-    /*imprimir_lista (l);*/
+
     imprimir_lista (l);
     if (lista_pertence (l, 11)) printf ("11 pertence\n");
     if (lista_pertence (l, 12)) printf ("12 pertence\n");
@@ -125,7 +125,7 @@ void teste_de_pertinencia (struct lista *l)
     if (! lista_pertence (l, 10)) printf ("10 nao pertence\n");
     if (! lista_pertence (l, 16)) printf ("16 nao pertence\n");
 }
-
+*/
 int main (void)
 {
     struct lista *l;
@@ -133,16 +133,16 @@ int main (void)
 
     printf ("Teste 1: criar lista e ver se esta vazia:\n");
     printf ("Esperado: tem que imprimir mensagem 'lista esta vazia'\n");
-    l = teste_criar_lista ();
+    l = teste_criar_lista (); 
     teste_lista_vazia (l);
     printf ("\n\n");
-
+    
     printf ("Teste 2: tenta remover elemento com lista vazia:\n");
     printf ("Esperado: nao pode ter dado segfault\n");
     if (! lista_remove_inicio (l, &chave))
         printf ("\tOK: remover da lista vazia nao deu segfault.\n");
     printf ("\n\n");
-
+    
     printf ("Teste 3: inserir 5 elementos no inicio:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez com o maior elemento no inicio. \n");
     printf ("\nATENCAO: se nao imprimir a lista corretamente o erro pode estar:\n");
@@ -151,7 +151,7 @@ int main (void)
     printf ("- voce pode implementar TEMPORARIAMENTE uma funcao que imprime a lista acessando os nodos diretamente, ate encontrar o problema.\n");
     teste_insere_inicio (l, MAX); 
     printf ("\n\n");
-
+    /*
     printf ("Teste 4: esvaziar a lista retirando do inicio:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez sem o primeiro elemento\n");
     printf ("          Ao final, mostrar a mensagem 'lista vazia'\n");
@@ -199,6 +199,6 @@ int main (void)
     l = lista_cria ();
     lista_destroi (&l);
     printf ("\n\n");
-
-    return 0;
+    */
+    return 0; 
 }
