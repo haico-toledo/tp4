@@ -29,6 +29,11 @@ struct lista *lista_cria (){
 
 void lista_destroi (struct lista **lista){
     struct nodo *aux;
+    if ((*lista) == NULL)
+    {
+        free(*lista);
+        return;
+    }
 
     (*lista)->ptr = (*lista)->ini;
 
@@ -55,6 +60,7 @@ int lista_insere_inicio (struct lista *lista, int chave){
     novo -> chave = chave;
     novo -> prox = lista -> ini;
     lista -> ini = novo;
+    lista -> tamanho++;
 
     return 1;
 }
@@ -98,10 +104,16 @@ int lista_tamanho (struct lista *lista){
 
 int lista_pertence (struct lista *lista, int chave){
 }
-
+*/
 void lista_inicia_iterador (struct lista *lista){
+    lista -> ptr = lista -> ini;
 }
 
 int lista_incrementa_iterador (struct lista *lista, int *chave){
+    if (lista -> ptr == NULL)
+        return 0;
+
+    *chave = lista -> ptr -> chave;
+    lista -> ptr = lista -> ptr -> prox;
+    return 1;
 }
-*/
