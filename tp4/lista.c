@@ -30,10 +30,7 @@ struct lista *lista_cria (){
 void lista_destroi (struct lista **lista){
     struct nodo *aux;
     if ((*lista) == NULL)
-    {
-        free(*lista);
         return;
-    }
 
     (*lista)->ptr = (*lista)->ini;
 
@@ -50,12 +47,15 @@ void lista_destroi (struct lista **lista){
 }
 
 int lista_insere_inicio (struct lista *lista, int chave){
-    struct nodo *novo;
-
-    novo = malloc(sizeof(struct nodo *));
-
-    if (novo == NULL)
+    if (lista == NULL)
         return 0;
+
+    struct nodo *novo;
+            
+    novo = malloc(sizeof(struct nodo *));
+    
+    if (novo == NULL)
+        return 0;    
         
     novo -> chave = chave;
     novo -> prox = lista -> ini;
@@ -64,14 +64,27 @@ int lista_insere_inicio (struct lista *lista, int chave){
 
     return 1;
 }
-/*
+
 int lista_insere_fim (struct lista *lista, int chave){
+    if (lista == NULL)
+        return 0;	
+	
+	struct nodo *novo;
+	
+	novo = malloc(sizeof(struct nodo *));
+	
+    if (novo == NULL)
+        return 0; 
+        
+	
 }
 
+
+/*
 int lista_insere_ordenado (struct lista *lista, int chave){
 }
-
 */
+
 int lista_remove_inicio (struct lista *lista, int *chave){
     struct nodo *aux;
     
@@ -82,6 +95,7 @@ int lista_remove_inicio (struct lista *lista, int *chave){
     aux = lista -> ini -> prox;
     free(lista -> ini);
     lista -> ini = aux;
+    lista -> tamanho--;
 
     return 1;
 
