@@ -24,6 +24,11 @@ struct lista *lista_cria (){
 
     if (l == NULL)
         return NULL;
+
+    l -> ini = NULL;
+    l -> ptr = NULL;
+    l -> tamanho = 0;
+    
     return l;
 } /*nao testada ainda*/
 
@@ -65,20 +70,39 @@ int lista_insere_inicio (struct lista *lista, int chave){
     return 1;
 }
 
-int lista_insere_fim (struct lista *lista, int chave){
-    if (lista == NULL)
+int lista_insere_fim (struct lista *lista, int chave){	
+    if (lista == NULL){
         return 0;	
-	
-	struct nodo *novo;
-	
+    }
+    
+    struct nodo *novo;
+    struct nodo *aux;
+
 	novo = malloc(sizeof(struct nodo *));
 	
     if (novo == NULL)
-        return 0; 
-        
-	
-}
+        return 0;         
 
+    novo -> chave = chave;
+    novo -> prox = NULL;
+
+    if (lista -> ini == NULL)
+    {
+        lista -> ini = novo;
+        return 1;
+    }
+
+    aux = lista -> ini;
+
+    while (aux->prox != NULL)
+        aux = aux -> prox;
+
+    aux -> prox = novo;
+    lista -> tamanho++;
+    
+    return 1;
+    
+}
 
 /*
 int lista_insere_ordenado (struct lista *lista, int chave){
@@ -100,13 +124,47 @@ int lista_remove_inicio (struct lista *lista, int *chave){
     return 1;
 
 }
-/*
+
 int lista_remove_fim (struct lista *lista, int *chave){
+    if (lista == NULL || lista -> ini == NULL)
+        return 0;
+
+    struct nodo *aux;
+
+    aux = lista -> ini;
+
+    if (aux -> prox == NULL)
+    {
+        *chave = lista -> ini -> chave;
+        free(lista -> ini);
+        lista -> ini = NULL;
+        lista -> tamanho--;
+        return 1;
+    }
+        /*remove prox*/
+
+    while (aux->prox->prox != NULL)
+        aux = aux -> prox;
+
+    *chave = aux -> prox -> chave;
+    free(aux -> prox);
+    aux -> prox = NULL;
+    lista -> tamanho--;
+    return 1;
+    
+    /*remove prox*/
+
+
+
+
+
 }
 
+/*
 int lista_remove_ordenado (struct lista *lista, int chave){
 }
 */
+
 int lista_vazia (struct lista *lista){
     if (lista -> ini == NULL)
         return 1;

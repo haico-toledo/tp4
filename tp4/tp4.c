@@ -54,7 +54,7 @@ void teste_insere_inicio (struct lista *l, int limite)
         imprimir_lista (l);
     }
 }
-/*
+
 void teste_insere_fim (struct lista *l, int limite)
 {
     int i;
@@ -68,7 +68,7 @@ void teste_insere_fim (struct lista *l, int limite)
         imprimir_lista (l);
     }
 }
-*/
+
 void teste_remove_inicio (struct lista *l)
 {
     int chave;
@@ -78,7 +78,7 @@ void teste_remove_inicio (struct lista *l)
         if (lista_remove_inicio (l, &chave))
             imprimir_lista (l);
 }
-/*
+
 void teste_remove_fim (struct lista *l)
 {
     int chave;
@@ -88,7 +88,7 @@ void teste_remove_fim (struct lista *l)
         if (lista_remove_fim (l, &chave))
             imprimir_lista (l);
 }
-
+/*
 void teste_insere_ordenado (struct lista *l)
 {
     lista_insere_ordenado (l, 13); imprimir_lista (l);
@@ -142,7 +142,7 @@ int main (void)
     if (! lista_remove_inicio (l, &chave))
         printf ("\tOK: remover da lista vazia nao deu segfault.\n");
     printf ("\n\n");
-    
+
     printf ("Teste 3: inserir 5 elementos no inicio:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez com o maior elemento no inicio. \n");
     printf ("\nATENCAO: se nao imprimir a lista corretamente o erro pode estar:\n");
@@ -151,24 +151,24 @@ int main (void)
     printf ("- voce pode implementar TEMPORARIAMENTE uma funcao que imprime a lista acessando os nodos diretamente, ate encontrar o problema.\n");
     teste_insere_inicio (l, MAX); 
     printf ("\n\n");
-   
+
     printf ("Teste 4: esvaziar a lista retirando do inicio:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez sem o primeiro elemento\n");
     printf ("          Ao final, mostrar a mensagem 'lista vazia'\n");
     teste_remove_inicio (l); 
     printf ("\n\n");
- /*
+
     printf ("Teste 5: inserir 5 elementos no fim:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez com o maior elemento no fim\n");
     teste_insere_fim (l, MAX); 
     printf ("\n\n");
-
+   
     printf ("Teste 6: esvaziar a lista retirando do fim:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, a cada vez sem o maior elemento\n");
     printf ("          Ao final, mostrar a mensagem 'lista vazia'\n");
     teste_remove_fim (l); 
     printf ("\n\n");
-
+     /*
     printf ("Teste 7: inserir 5 elementos em ordem:\n");
     printf ("Esperado: tem que imprimir a lista 5 vezes, sempre ordenada\n");
     printf ("Esperado: tem que mostrar remover de 11 ate 15\n");
@@ -192,13 +192,14 @@ int main (void)
     printf ("          E nao pode ter segfault\n");
     lista_destroi (&l);
     printf ("\n\n");
-     
+    
+    */
     printf ("Teste 11: destruir uma lista vazia:\n");
     printf ("Esperado: nao pode ter leak (conferir com valdrind)\n");
     printf ("          E nao pode ter segfault\n");
     l = lista_cria ();
     lista_destroi (&l);
     printf ("\n\n");
-   */
+   
     return 0; 
 }
