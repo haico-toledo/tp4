@@ -107,7 +107,7 @@ void teste_remove_ordenado (struct lista *l)
     lista_remove_ordenado (l, 12); imprimir_lista (l);
     lista_remove_ordenado (l, 14); imprimir_lista (l);
 }
-
+*/
 void teste_de_pertinencia (struct lista *l)
 {
     lista_insere_inicio (l, 13);
@@ -125,7 +125,7 @@ void teste_de_pertinencia (struct lista *l)
     if (! lista_pertence (l, 10)) printf ("10 nao pertence\n");
     if (! lista_pertence (l, 16)) printf ("16 nao pertence\n");
 }
-*/
+
 int main (void)
 {
     struct lista *l;
@@ -180,7 +180,7 @@ int main (void)
     printf ("          Ao final, mostrar a mensagem 'lista vazia'\n");
     teste_remove_ordenado (l); 
     printf ("\n\n");
-
+    */
     printf ("Teste 9: teste de pertinencia \n");
     printf ("Esperado: apos imprimir a lista, tem que mostrar que de 11 a 15 pertence\n");
     printf ("          E que 10 e 16 nao pertencem\n");
@@ -193,7 +193,7 @@ int main (void)
     lista_destroi (&l);
     printf ("\n\n");
     
-    */
+    
     printf ("Teste 11: destruir uma lista vazia:\n");
     printf ("Esperado: nao pode ter leak (conferir com valdrind)\n");
     printf ("          E nao pode ter segfault\n");

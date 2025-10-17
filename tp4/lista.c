@@ -71,9 +71,8 @@ int lista_insere_inicio (struct lista *lista, int chave){
 }
 
 int lista_insere_fim (struct lista *lista, int chave){	
-    if (lista == NULL){
+    if (lista == NULL)
         return 0;	
-    }
     
     struct nodo *novo;
     struct nodo *aux;
@@ -139,9 +138,10 @@ int lista_remove_fim (struct lista *lista, int *chave){
         free(lista -> ini);
         lista -> ini = NULL;
         lista -> tamanho--;
+
         return 1;
     }
-        /*remove prox*/
+  
 
     while (aux->prox->prox != NULL)
         aux = aux -> prox;
@@ -150,13 +150,8 @@ int lista_remove_fim (struct lista *lista, int *chave){
     free(aux -> prox);
     aux -> prox = NULL;
     lista -> tamanho--;
+
     return 1;
-    
-    /*remove prox*/
-
-
-
-
 
 }
 
@@ -173,10 +168,24 @@ int lista_vazia (struct lista *lista){
 /*
 int lista_tamanho (struct lista *lista){
 }
-
-int lista_pertence (struct lista *lista, int chave){
-}
 */
+int lista_pertence (struct lista *lista, int chave){
+    if (lista == NULL || lista -> ini == NULL)
+        return 0;
+
+    struct nodo *aux;
+
+    aux = lista -> ini;
+
+    while (aux -> chave != chave && aux -> prox != NULL)
+        aux = aux -> prox;
+
+    if (aux -> chave != chave)
+        return 0;
+
+    return 1;
+}
+
 void lista_inicia_iterador (struct lista *lista){
     lista -> ptr = lista -> ini;
 }
